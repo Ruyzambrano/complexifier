@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: complexifier
+Version: 0.0.1
+Summary: A library to make data worse
+Author-email: Ruy Zambrano <ruyzambrano@gmail.com>
+Project-URL: Homepage, https://github.com/ruyzambrano/complexifier
+Project-URL: Issues, https://github.com/ruyzambrano/complexifier/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# Complexifier
+
+This makes your pandas dataframe even worse
