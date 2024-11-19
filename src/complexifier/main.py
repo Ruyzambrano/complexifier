@@ -4,7 +4,14 @@ from typo import StrErrer
 import pandas as pd
 
 def create_spag_error(word: str) -> str:
-    """Gives a 10% chance to introduce a spag error to a word"""
+    """Gives a 10% chance to introduce a spelling error to a word.
+
+    Args:
+        word (str): The original word to potentially alter.
+
+    Returns:
+        str: The original word or a word with a random spelling error.
+    """
     if len(word) < 3:
         return word
     error_object = StrErrer(word)
@@ -36,6 +43,15 @@ def create_spag_error(word: str) -> str:
             return word
 
 def introduce_spag_error(df: pd.DataFrame, columns=None) -> pd.DataFrame:
+    """Applies random spelling errors to specified columns in a DataFrame.
+
+    Args:
+        df (pd.DataFrame): The DataFrame to alter.
+        columns (list or str, optional): Column names to apply errors to. If not provided, defaults to all string columns.
+
+    Returns:
+        pd.DataFrame: The DataFrame with potential spelling errors introduced.
+    """
     if not columns:
         columns = df.select_dtypes(include=["string", "object"]).columns
     elif isinstance(columns, str):
@@ -52,7 +68,15 @@ def introduce_spag_error(df: pd.DataFrame, columns=None) -> pd.DataFrame:
     return df
 
 def add_or_subtract_outliers(df: pd.DataFrame, columns=None) -> pd.DataFrame:
-    """Adds or subtracts a random integer in the columms of between 1% and 10% of the rows"""
+    """Adds or subtracts a random integer in columns of between 1% and 10% of the rows.
+
+    Args:
+        df (pd.DataFrame): The DataFrame to modify.
+        columns (list or str, optional): Column names to adjust. Defaults to numeric columns if not specified.
+
+    Returns:
+        pd.DataFrame: The DataFrame with outliers added.
+    """
     if not columns:
         columns = df.select_dtypes(include="number").columns
     for col in columns:
@@ -71,7 +95,17 @@ def add_or_subtract_outliers(df: pd.DataFrame, columns=None) -> pd.DataFrame:
 def add_standard_deviations(
     df: pd.DataFrame, columns=None, min_std=1, max_std=5
 ) -> pd.DataFrame:
-    """Add 1-5 standard deviations for each column"""
+    """Adds random deviations to entries in specified numeric columns to simulate data anomalies.
+
+    Args:
+        df (pd.DataFrame): The DataFrame to manipulate.
+        columns (list or str, optional): Column names to modify. Defaults to numeric columns if not specified.
+        min_std (int): Minimum number of standard deviations to add.
+        max_std (int): Maximum number of standard deviations to add.
+
+    Returns:
+        pd.DataFrame: The DataFrame with deviations added.
+    """
     if not columns:
         columns = df.select_dtypes(include="number").columns
 
@@ -91,7 +125,15 @@ def add_standard_deviations(
 
 
 def duplicate_rows(df: pd.DataFrame, sample_size=None) -> pd.DataFrame:
-    """Adds duplicate rows to a dataframe"""
+    """Adds duplicate rows to a DataFrame.
+
+    Args:
+        df (pd.DataFrame): DataFrame to which duplicates will be added.
+        sample_size (int, optional): Number of rows to duplicate. Randomly selected if not specified.
+
+    Returns:
+        pd.DataFrame: The DataFrame with duplicate rows added.
+    """
     if not sample_size:
         sample_size = random.randint(len(df[col]) // 100, len(df[col]) // 10)
     new_rows = df.sample(sample_size)
@@ -101,6 +143,17 @@ def duplicate_rows(df: pd.DataFrame, sample_size=None) -> pd.DataFrame:
 def add_nulls(
     df: pd.DataFrame, columns=None, min_percent=1, max_percent=10
 ) -> pd.DataFrame:
+     """Inserts null values into specified DataFrame columns.
+
+    Args:
+        df (pd.DataFrame): The DataFrame to modify.
+        columns (list or str, optional): Specific columns to add nulls to. Defaults to all columns if not specified.
+        min_percent (int): Minimum percentage of null values to insert.
+        max_percent (int): Maximum percentage of null values to insert.
+
+    Returns:
+        pd.DataFrame: The DataFrame with null values inserted.
+    """
     if not columns:
         columns = df.columns
     for col in columns:
