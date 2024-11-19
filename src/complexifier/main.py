@@ -3,7 +3,8 @@ import random
 from typo import StrErrer
 import pandas as pd
 
-def introduce_spag_error(word: str) -> str:
+def create_spag_error(word: str) -> str:
+    """Gives a 10% chance to introduce a spag error to a word"""
     if len(word) < 3:
         return word
     error_object = StrErrer(word)
@@ -34,6 +35,21 @@ def introduce_spag_error(word: str) -> str:
         case _:
             return word
 
+def introduce_spag_error(df: pd.DataFrame, columns=None) -> pd.DataFrame:
+    if not columns:
+        columns = df.select_dtypes(include=["string", "object"]).columns
+    elif isinstance(columns, str):
+        columns = [columns]
+    
+    elif not isinstance(columns, list):
+        raise TypeError(f"Columns is type {type(columns)} but expected str or list")
+    for col in columns:
+        if col not in df.columns:
+            raise ValueError(f"{col} not in DataFrame")
+        if not pd.api.types.is_string_dtype(df[col]):
+            raise TypeError(f"{col} is {df[col].dtype}, not a string type")
+        df[col] = df[col].apply(create_spag_error)
+    return df
 
 def add_or_subtract_outliers(df: pd.DataFrame, columns=None) -> pd.DataFrame:
     """Adds or subtracts a random integer in the columms of between 1% and 10% of the rows"""
@@ -93,3 +109,4 @@ def add_nulls(
         ).index
         df.loc[indices_to_none, col] = None
     return df
+

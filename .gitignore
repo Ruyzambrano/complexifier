@@ -3,3 +3,5 @@ venv
 dist
 *.txt
 *.sh
+__pycache__
+testing.py
