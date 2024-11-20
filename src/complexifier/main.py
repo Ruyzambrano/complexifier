@@ -54,6 +54,10 @@ def introduce_spag_error(df: pd.DataFrame, columns=None) -> pd.DataFrame:
     Returns:
         pd.DataFrame: The DataFrame with potential spelling errors introduced.
     """
+    if not isinstance(df, pd.DataFrame):
+        raise TypeError("Must be a pandas")
+    if df.empty:
+        return df
     if not columns:
         columns = df.select_dtypes(include=["string", "object"]).columns
     elif isinstance(columns, str):
@@ -80,6 +84,10 @@ def add_or_subtract_outliers(df: pd.DataFrame, columns=None) -> pd.DataFrame:
     Returns:
         pd.DataFrame: The DataFrame with outliers added.
     """
+    if not isinstance(df, pd.DataFrame):
+        raise TypeError("Must be a pandas")
+    if df.empty:
+        return df
     if not columns:
         columns = df.select_dtypes(include="number").columns
     elif isinstance(columns, str):
@@ -91,7 +99,7 @@ def add_or_subtract_outliers(df: pd.DataFrame, columns=None) -> pd.DataFrame:
         columns = [columns]
     elif not isinstance(columns, list):
         raise TypeError(f"Columns is type {type(columns)} but expected str or list")
-    
+
     for col in columns:
         if col not in df.columns:
             raise ValueError(f"{col} is not a column.")
@@ -119,6 +127,10 @@ def add_standard_deviations(
     Returns:
         pd.DataFrame: The DataFrame with deviations added.
     """
+    if not isinstance(df, pd.DataFrame):
+        raise TypeError("Must be a pandas")
+    if df.empty:
+        return df
     if not columns:
         columns = df.select_dtypes(include="number").columns
     elif isinstance(columns, str):
@@ -151,6 +163,10 @@ def duplicate_rows(df: pd.DataFrame, sample_size=None) -> pd.DataFrame:
     Returns:
         pd.DataFrame: The DataFrame with duplicate rows added.
     """
+    if not isinstance(df, pd.DataFrame):
+        raise TypeError("Must be a pandas")
+    if df.empty:
+        return df
     if not sample_size:
         sample_size = random.randint(len(df) // 100, len(df) // 10)
     new_rows = df.sample(sample_size)
@@ -166,12 +182,18 @@ def add_nulls(
     Args:
         df (pd.DataFrame): The DataFrame to modify.
         columns (list or str, optional): Specific columns to add nulls to. Defaults to all columns if not specified.
-        min_percent (int): Minimum percentage of null values to insert.
-        max_percent (int): Maximum percentage of null values to insert.
+        min_percent (int): Minimum percentage of null values to insert. Defaults to 1%
+        max_percent (int): Maximum percentage of null values to insert. Defaults to 10%
 
     Returns:
         pd.DataFrame: The DataFrame with null values inserted.
     """
+    if not isinstance(df, pd.DataFrame):
+        raise TypeError("Must be a pandas")
+    if df.empty:
+        return df
+    if columns == []:
+        columns = df.columns.to_list()
     if not columns:
         columns = df.columns
     elif isinstance(columns, str):
@@ -181,9 +203,74 @@ def add_nulls(
 
     for col in columns:
         chosen_percent = random.randint(min_percent, max_percent) / 100
-        sample_size = round(len(df)*chosen_percent)
+        sample_size = round(len(df) * chosen_percent)
         if sample_size == 0:
             sample_size = 1
         indices_to_none = df.sample(sample_size).index
         df.loc[indices_to_none, col] = None
     return df
+
+
+def mess_it_up(
+    df: pd.DataFrame,
+    columns=None,
+    min_std=1,
+    max_std=5,
+    sample_size=None,
+    min_percent=1,
+    max_percent=10,
+    introduce_spag=True,
+    add_outliers=True,
+    add_std=True,
+    duplicate=True,
+    add_null=True,
+) -> pd.DataFrame:
+    """
+    Applies several functions to add outliers, spelling errors and null values
+
+    Args:
+        df (pd.DataFrame): The DataFrame to modify.
+        columns (list or str, optional): Specific columns to add nulls to. Defaults to all columns if not specified.
+        min_std (int): Minimum number of standard deviations to add. Defaults to 1
+        max_std (int): Maximum number of standard deviations to add. Defaults to 5
+        sample_size (int, optional): Number of rows to duplicate. Randomly selected if not specified.
+        min_percent (int): Minimum percentage of null values to insert. Defaults to 1%
+        max_percent (int): Maximum percentage of null values to insert. Defaults to 10%
+
+    """
+    if not isinstance(df, pd.DataFrame):
+        raise TypeError("Must be a pandas")
+    if df.empty:
+        return df
+    if columns == []:
+        columns = df.columns.to_list()
+    if not columns:
+        columns = df.columns.to_list()
+    elif isinstance(columns, str):
+        columns = [columns]
+    elif not isinstance(columns, list):
+        raise TypeError(f"Columns is type {type(columns)} but expected str or list")
+
+    string_cols = df[columns].select_dtypes(include="string").columns.to_list()
+    numeric_cols = df[columns].select_dtypes(include="number").columns.to_list()
+    if string_cols:
+        df = introduce_spag_error(df, columns=string_cols)
+    if numeric_cols:
+        df = add_or_subtract_outliers(df, columns=numeric_cols)
+        df = add_standard_deviations(
+            df, columns=numeric_cols, min_std=min_std, max_std=max_std
+        )
+
+    df = duplicate_rows(df, sample_size)
+    df = add_nulls(df, columns, min_percent=min_percent, max_percent=max_percent)
+    return df
+
+
+data = pd.DataFrame(
+    {
+        "Name": ["Alice", "Bob", "Charlie", "David", "Eva"],
+        "Age": [28, 34, 29, 42, 25],
+        "City": ["New York", "Los Angeles", "Chicago", "Houston", "Phoenix"],
+        "Salary": [70000, 80000, 72000, 95000, 67000],
+    }
+)
