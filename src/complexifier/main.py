@@ -3,6 +3,7 @@ import random
 from typo import StrErrer
 import pandas as pd
 
+
 def create_spag_error(word: str) -> str:
     """Gives a 10% chance to introduce a spelling error to a word.
 
@@ -42,6 +43,7 @@ def create_spag_error(word: str) -> str:
         case _:
             return word
 
+
 def introduce_spag_error(df: pd.DataFrame, columns=None) -> pd.DataFrame:
     """Applies random spelling errors to specified columns in a DataFrame.
 
@@ -56,9 +58,9 @@ def introduce_spag_error(df: pd.DataFrame, columns=None) -> pd.DataFrame:
         columns = df.select_dtypes(include=["string", "object"]).columns
     elif isinstance(columns, str):
         columns = [columns]
-    
     elif not isinstance(columns, list):
         raise TypeError(f"Columns is type {type(columns)} but expected str or list")
+
     for col in columns:
         if col not in df.columns:
             raise ValueError(f"{col} not in DataFrame")
@@ -66,6 +68,7 @@ def introduce_spag_error(df: pd.DataFrame, columns=None) -> pd.DataFrame:
             raise TypeError(f"{col} is {df[col].dtype}, not a string type")
         df[col] = df[col].apply(create_spag_error)
     return df
+
 
 def add_or_subtract_outliers(df: pd.DataFrame, columns=None) -> pd.DataFrame:
     """Adds or subtracts a random integer in columns of between 1% and 10% of the rows.
@@ -79,6 +82,16 @@ def add_or_subtract_outliers(df: pd.DataFrame, columns=None) -> pd.DataFrame:
     """
     if not columns:
         columns = df.select_dtypes(include="number").columns
+    elif isinstance(columns, str):
+        columns = [columns]
+    elif not isinstance(columns, list):
+        raise TypeError(f"Columns is type {type(columns)} but expected str or list")
+
+    elif isinstance(columns, str):
+        columns = [columns]
+    elif not isinstance(columns, list):
+        raise TypeError(f"Columns is type {type(columns)} but expected str or list")
+    
     for col in columns:
         if col not in df.columns:
             raise ValueError(f"{col} is not a column.")
@@ -108,6 +121,10 @@ def add_standard_deviations(
     """
     if not columns:
         columns = df.select_dtypes(include="number").columns
+    elif isinstance(columns, str):
+        columns = [columns]
+    elif not isinstance(columns, list):
+        raise TypeError(f"Columns is type {type(columns)} but expected str or list")
 
     for col in columns:
         if col not in df.columns:
@@ -143,7 +160,8 @@ def duplicate_rows(df: pd.DataFrame, sample_size=None) -> pd.DataFrame:
 def add_nulls(
     df: pd.DataFrame, columns=None, min_percent=1, max_percent=10
 ) -> pd.DataFrame:
-     """Inserts null values into specified DataFrame columns.
+    """
+    Inserts null values into specified DataFrame columns.
 
     Args:
         df (pd.DataFrame): The DataFrame to modify.
@@ -156,10 +174,14 @@ def add_nulls(
     """
     if not columns:
         columns = df.columns
+    elif isinstance(columns, str):
+        columns = [columns]
+    elif not isinstance(columns, list):
+        raise TypeError(f"Columns is type {type(columns)} but expected str or list")
+
     for col in columns:
         indices_to_none = df.sample(
             len(df) * random.randint(min_percent, max_percent) // 100
         ).index
         df.loc[indices_to_none, col] = None
     return df
-

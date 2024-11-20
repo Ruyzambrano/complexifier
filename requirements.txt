@@ -2,3 +2,5 @@ pandas
 typo
 ipykernel
 shutup
+pytest
+pylint

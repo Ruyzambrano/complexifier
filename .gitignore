@@ -5,3 +5,4 @@ dist
 *.sh
 __pycache__
 testing.py
+.coverage
