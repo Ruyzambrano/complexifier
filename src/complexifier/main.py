@@ -19,19 +19,19 @@ def create_spag_error(word: str) -> str:
     weight = random.randint(1, 100)
     match weight:
         case 1:
-            return error_object.missing_char()
+            return error_object.missing_char().result
         case 2:
-            return error_object.char_swap()
+            return error_object.char_swap().result
         case 3:
-            return error_object.extra_char()
+            return error_object.extra_char().result
         case 4:
-            return error_object.nearby_char()
+            return error_object.nearby_char().result
         case 5:
-            return error_object.similar_char()
+            return error_object.similar_char().result
         case 6:
-            return error_object.random_space()
+            return error_object.random_space().result
         case 7:
-            return error_object.repeated_char()
+            return error_object.repeated_char().result
         case 8:
             return word.lower()
         case 9:
@@ -152,7 +152,7 @@ def duplicate_rows(df: pd.DataFrame, sample_size=None) -> pd.DataFrame:
         pd.DataFrame: The DataFrame with duplicate rows added.
     """
     if not sample_size:
-        sample_size = random.randint(len(df[col]) // 100, len(df[col]) // 10)
+        sample_size = random.randint(len(df) // 100, len(df) // 10)
     new_rows = df.sample(sample_size)
     return pd.concat([df, new_rows])
 
@@ -180,8 +180,10 @@ def add_nulls(
         raise TypeError(f"Columns is type {type(columns)} but expected str or list")
 
     for col in columns:
-        indices_to_none = df.sample(
-            len(df) * random.randint(min_percent, max_percent) // 100
-        ).index
+        chosen_percent = random.randint(min_percent, max_percent) / 100
+        sample_size = round(len(df)*chosen_percent)
+        if sample_size == 0:
+            sample_size = 1
+        indices_to_none = df.sample(sample_size).index
         df.loc[indices_to_none, col] = None
     return df
