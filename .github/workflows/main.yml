@@ -1,4 +1,4 @@
-name: Test Library
+name: Test
 
 on:
   push:
@@ -29,4 +29,3 @@ jobs:
     - name: Run tests with coverage
       run: |
         pytest --cov=complexifier 
-        
