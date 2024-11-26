@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Complexifier &#8212; Complexifier 0.3.1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="complexifier">
+<h1>Complexifier<a class="headerlink" href="#complexifier" title="Permalink to this headline">¶</a></h1>
+<p>Make your pandas even worse!</p>
+<p>Complexifier is a Python library crafted to transform clean datasets into messy versions by introducing random errors and anomalies. This is particularly useful for educational purposes, where students learn to clean data through practical experience.</p>
+<div class="section" id="problem">
+<h2>Problem<a class="headerlink" href="#problem" title="Permalink to this headline">¶</a></h2>
+<p>When teaching students to work with data, an important lesson is how to clean it.</p>
+<p>The problem with this is that there are two types of datasets available on the internet:</p>
+<ol class="arabic simple">
+<li><p>Data that is good, but already cleaned</p></li>
+<li><p>Data that is not cleaned, but is terrible and incomprehensible</p></li>
+</ol>
+<p>Complexifier solves this problem by allowing you to take the former and turn it into a better version of the latter!</p>
+</div>
+<div class="section" id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
+<p>Complexifier relies on the following packages:</p>
+<ul class="simple">
+<li><p><cite>pandas</cite></p></li>
+<li><p><cite>typo</cite></p></li>
+<li><p><cite>random</cite></p></li>
+</ul>
+<p>Ensure these dependencies are installed in your environment.</p>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>You can install <cite>complexifier</cite> via <cite>pip</cite>:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip install complexifier
+</pre></div>
+</div>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>Once installed, use <cite>complexifier</cite> to add mistakes and simulate anomalies in your data. This library provides several methods:</p>
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="create-spag-error">
+<h3>create_spag_error<a class="headerlink" href="#create-spag-error" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">create_spag_error</span><span class="p">(</span><span class="n">word</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span>
+</pre></div>
+</div>
+<p>Introduces a 10% chance of a random spelling error in a given word, helpful for simulating typos.</p>
+<p><strong>Parameters</strong>:
+- <cite>word</cite> (str): The original word to potentially alter.</p>
+</div>
+<div class="section" id="introduce-spag-error">
+<h3>introduce_spag_error<a class="headerlink" href="#introduce-spag-error" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">introduce_spag_error</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
+</pre></div>
+</div>
+<p>Applies <cite>create_spag_error</cite> to each string entry in specified DataFrame columns, introducing random spelling errors with a 10% probability.</p>
+<p><strong>Parameters</strong>:
+- <cite>df</cite> (pd.DataFrame): The DataFrame to alter.
+- <cite>columns</cite> (list or str): Column names to apply errors to. Defaults to all string columns.</p>
+</div>
+<div class="section" id="add-or-subtract-outliers">
+<h3>add_or_subtract_outliers<a class="headerlink" href="#add-or-subtract-outliers" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">add_or_subtract_outliers</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
+</pre></div>
+</div>
+<p>Randomly adds or subtracts values in specified numeric columns, simulating outliers in 1% to 10% of rows.</p>
+<p><strong>Parameters</strong>:
+- <cite>df</cite> (pd.DataFrame): The DataFrame to modify.
+- <cite>columns</cite> (list or str): Column names to adjust. Defaults to all numeric columns if not specified.</p>
+</div>
+<div class="section" id="add-standard-deviations">
+<h3>add_standard_deviations<a class="headerlink" href="#add-standard-deviations" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">add_standard_deviations</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">min_std</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_std</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
+</pre></div>
+</div>
+<p>Adds between 1 to 5 standard deviations to random entries in numeric columns to simulate data anomalies.</p>
+<p><strong>Parameters</strong>:
+- <cite>df</cite> (pd.DataFrame): The DataFrame to manipulate.
+- <cite>columns</cite> (list or str): Column names to modify. Defaults to numeric columns if not specified.
+- <cite>min_std</cite> (int): Minimum number of standard deviations to add. Defaults to 1.
+- <cite>max_std</cite> (int): Maximum number of standard deviations to add. Defaults to 5.</p>
+</div>
+<div class="section" id="duplicate-rows">
+<h3>duplicate_rows<a class="headerlink" href="#duplicate-rows" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">duplicate_rows</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">sample_size</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
+</pre></div>
+</div>
+<p>Introduces duplicate rows into a DataFrame, useful for testing deduplication processes.</p>
+<p><strong>Parameters</strong>:
+- <cite>df</cite> (pd.DataFrame): DataFrame to which duplicates will be added.
+- <cite>sample_size</cite> (int): Number of rows to duplicate. A random percentage between 1% and 10% if not specified.</p>
+</div>
+<div class="section" id="add-nulls">
+<h3>add_nulls<a class="headerlink" href="#add-nulls" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">add_nulls</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">min_percent</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_percent</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
+</pre></div>
+</div>
+<p>Inserts null values into specified DataFrame columns, simulating missing data conditions.</p>
+<p><strong>Parameters</strong>:
+- <cite>df</cite> (pd.DataFrame): The DataFrame to modify.
+- <cite>columns</cite> (list or str, optional): Specific columns to add nulls to. Defaults to all columns if not specified.
+- <cite>min_percent</cite> (int): Minimum percentage of null values to insert. Defaults to 1%.
+- <cite>max_percent</cite> (int): Maximum percentage of null values to insert. Defaults to 10%.</p>
+</div>
+<div class="section" id="mess-it-up">
+<h3>mess_it_up<a class="headerlink" href="#mess-it-up" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mess_it_up</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">min_std</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_std</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sample_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">min_percent</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_percent</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+           <span class="n">introduce_spag</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">add_outliers</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">add_std</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">duplicate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">add_null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
+</pre></div>
+</div>
+<p>Integrates all methods to add errors comprehensively to the DataFrame.</p>
+<p><strong>Parameters</strong>:
+- <cite>df</cite> (pd.DataFrame): The DataFrame to modify.
+- <cite>columns</cite> (list or str, optional): Specific columns to add nulls to. Defaults to all columns if not specified.
+- <cite>min_std</cite> (int): Minimum number of standard deviations to add. Defaults to 1.
+- <cite>max_std</cite> (int): Maximum number of standard deviations to add. Defaults to 5.
+- <cite>sample_size</cite> (int, optional): Number of rows to duplicate. Randomly selected if not specified.
+- <cite>min_percent</cite> (int): Minimum percentage of null values to insert. Defaults to 1%.
+- <cite>max_percent</cite> (int): Maximum percentage of null values to insert. Defaults to 10%.
+- <cite>introduce_spag</cite> (bool): Adds spelling and grammar errors into string data. Defaults to True.
+- <cite>add_outliers</cite> (bool): Adds outliers to numerical data. Defaults to True.
+- <cite>add_std</cite> (bool): Adds standard deviations to the data. Defaults to True.
+- <cite>duplicate</cite> (bool): Adds duplicate rows to the data. Defaults to True.
+- <cite>add_null</cite> (bool): Adds null values to the dataset. Defaults to True.</p>
+</div>
+</div>
+<div class="section" id="contributing">
+<h2>Contributing<a class="headerlink" href="#contributing" title="Permalink to this headline">¶</a></h2>
+<p>Feel free to contribute by submitting a pull request on GitHub. For large changes, please open an issue to discuss before implementing changes.</p>
+</div>
+<div class="section" id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p>This project is licensed under the MIT License. See the LICENSE file for details.</p>
+</div>
+<div class="section" id="contact-information">
+<h2>Contact Information<a class="headerlink" href="#contact-information" title="Permalink to this headline">¶</a></h2>
+<p>For support or inquiries, please contact the maintainer at <a class="reference external" href="mailto:maintainer&#37;&#52;&#48;example&#46;com">maintainer<span>&#64;</span>example<span>&#46;</span>com</a>.</p>
+</div>
+<div class="section" id="changelog">
+<h2>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h2>
+<p>Version 0.3.1</p>
+</div>
+<div class="section" id="badges">
+<h2>Badges<a class="headerlink" href="#badges" title="Permalink to this headline">¶</a></h2>
+<a class="reference external image-reference" href="https://github.com/yourusername/complexifier"><img alt="https://img.shields.io/badge/build-passing-brightgreen" src="https://img.shields.io/badge/build-passing-brightgreen" /></a>
+<a class="reference external image-reference" href="https://codecov.io/gh/yourusername/complexifier"><img alt="https://img.shields.io/badge/coverage-95%25-green" src="https://img.shields.io/badge/coverage-95%25-green" /></a>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">Complexifier</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2024, Ruy Zambrano.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
