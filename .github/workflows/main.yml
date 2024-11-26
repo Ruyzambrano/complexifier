@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches:
-      - main
+      - '**'
   pull_request:
     branches:
       - main
@@ -29,7 +29,4 @@ jobs:
     - name: Run tests with coverage
       run: |
         pytest --cov=complexifier 
-
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v3
-
+        
