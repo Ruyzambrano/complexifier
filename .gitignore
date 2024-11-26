@@ -7,4 +7,6 @@ __pycache__
 testing.py
 .coverage
 .pytest_cache
-docs/
+docs/build
+make.bat
+Makefile
