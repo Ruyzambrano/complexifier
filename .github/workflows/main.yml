@@ -30,6 +30,6 @@ jobs:
       run: |
         pytest --cov=complexifier 
 
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v3
-
+    - name: Free Code Coverage
+      uses: SamuelCabralCruz/free-code-coverage@v0.0.13
+          
