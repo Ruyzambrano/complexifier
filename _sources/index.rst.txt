@@ -135,7 +135,7 @@ Inserts null values into specified DataFrame columns, simulating missing data co
 
 - `df` (pd.DataFrame): The DataFrame to modify.  
 
-- `columns` (list or str, optional): Specific columns to add nulls to. Defaults to all columns if not specified.  
+- `columns` (list or str): Specific columns to add nulls to. Defaults to all columns if not specified.  
 
 - `min_percent` (int): Minimum percentage of null values to insert. Defaults to 1%.  
 
@@ -155,13 +155,13 @@ Integrates all methods to add errors comprehensively to the DataFrame.
 
 - `df` (pd.DataFrame): The DataFrame to modify.  
 
-- `columns` (list or str, optional): Specific columns to add nulls to. Defaults to all columns if not specified.  
+- `columns` (list or str): Specific columns to add nulls to. Defaults to all columns if not specified.  
 
 - `min_std` (int): Minimum number of standard deviations to add. Defaults to 1.  
 
 - `max_std` (int): Maximum number of standard deviations to add. Defaults to 5.  
 
-- `sample_size` (int, optional): Number of rows to duplicate. Randomly selected if not specified.  
+- `sample_size` (int): Number of rows to duplicate. Randomly selected if not specified.  
 
 - `min_percent` (int): Minimum percentage of null values to insert. Defaults to 1%.  
 
@@ -190,12 +190,12 @@ This project is licensed under the MIT License. See the LICENSE file for details
 Contact Information
 -------------------
 
-For support or inquiries, please contact the maintainer at maintainer@example.com.
+For support or inquiries, please contact Ruy at ruyzambrano@gmail.com
 
 Changelog
 ---------
 
-Version 0.3.1
+Version 0.3.3
 
 Badges
 ------
