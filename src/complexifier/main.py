@@ -1,17 +1,15 @@
 import random
-
 from typo import StrErrer
 import pandas as pd
 
-
 def create_spag_error(word: str) -> str:
-    """Gives a 10% chance to introduce a spelling error to a word.
+    """
+    Gives a 10% chance to introduce a spelling error to a word.
 
-    Args:
-        word (str): The original word to potentially alter.
-
-    Returns:
-        str: The original word or a word with a random spelling error.
+    :param word: The original word to potentially alter.
+    :type word: str
+    :return: The original word or a word with a random spelling error.
+    :rtype: str
     """
     if len(word) < 3:
         return word
@@ -43,16 +41,16 @@ def create_spag_error(word: str) -> str:
         case _:
             return word
 
-
 def introduce_spag_error(df: pd.DataFrame, columns=None) -> pd.DataFrame:
-    """Applies random spelling errors to specified columns in a DataFrame.
+    """
+    Applies random spelling errors to specified columns in a DataFrame.
 
-    Args:
-        df (pd.DataFrame): The DataFrame to alter.
-        columns (list or str): Column names to apply errors to. Defaults to all string columns.
-
-    Returns:
-        pd.DataFrame: The DataFrame with potential spelling errors introduced.
+    :param df: The DataFrame to alter.
+    :type df: pd.DataFrame
+    :param columns: Column names to apply errors to. Defaults to all string columns.
+    :type columns: list or str, optional
+    :return: The DataFrame with potential spelling errors introduced.
+    :rtype: pd.DataFrame
     """
     if not isinstance(df, pd.DataFrame):
         raise TypeError("Must be a pandas")
@@ -73,16 +71,16 @@ def introduce_spag_error(df: pd.DataFrame, columns=None) -> pd.DataFrame:
         df[col] = df[col].apply(create_spag_error)
     return df
 
-
 def add_or_subtract_outliers(df: pd.DataFrame, columns=None) -> pd.DataFrame:
-    """Adds or subtracts a random integer in columns of between 1% and 10% of the rows.
+    """
+    Adds or subtracts a random integer in columns of between 1% and 10% of the rows.
 
-    Args:
-        df (pd.DataFrame): The DataFrame to modify.
-        columns (list or str): Column names to adjust. Defaults to all numeric columns if not specified.
-
-    Returns:
-        pd.DataFrame: The DataFrame with outliers added.
+    :param df: The DataFrame to modify.
+    :type df: pd.DataFrame
+    :param columns: Column names to adjust. Defaults to all numeric columns if not specified.
+    :type columns: list or str, optional
+    :return: The DataFrame with outliers added.
+    :rtype: pd.DataFrame
     """
     if not isinstance(df, pd.DataFrame):
         raise TypeError("Must be a pandas")
@@ -90,11 +88,6 @@ def add_or_subtract_outliers(df: pd.DataFrame, columns=None) -> pd.DataFrame:
         return df
     if not columns:
         columns = df.select_dtypes(include="number").columns
-    elif isinstance(columns, str):
-        columns = [columns]
-    elif not isinstance(columns, list):
-        raise TypeError(f"Columns is type {type(columns)} but expected str or list")
-
     elif isinstance(columns, str):
         columns = [columns]
     elif not isinstance(columns, list):
@@ -112,20 +105,20 @@ def add_or_subtract_outliers(df: pd.DataFrame, columns=None) -> pd.DataFrame:
         )
     return df
 
+def add_standard_deviations(df: pd.DataFrame, columns=None, min_std=1, max_std=5) -> pd.DataFrame:
+    """
+    Adds random deviations to entries in specified numeric columns to simulate data anomalies.
 
-def add_standard_deviations(
-    df: pd.DataFrame, columns=None, min_std=1, max_std=5
-) -> pd.DataFrame:
-    """Adds random deviations to entries in specified numeric columns to simulate data anomalies.
-
-    Args:
-        df (pd.DataFrame): The DataFrame to manipulate.
-        columns (list or str): Column names to modify. Defaults to numeric columns if not specified.
-        min_std (int): Minimum number of standard deviations to add. Defaults to 1
-        max_std (int): Maximum number of standard deviations to add. Defaults to 5
-
-    Returns:
-        pd.DataFrame: The DataFrame with deviations added.
+    :param df: The DataFrame to manipulate.
+    :type df: pd.DataFrame
+    :param columns: Column names to modify. Defaults to numeric columns if not specified.
+    :type columns: list or str, optional
+    :param min_std: Minimum number of standard deviations to add. Defaults to 1
+    :type min_std: int, optional
+    :param max_std: Maximum number of standard deviations to add. Defaults to 5
+    :type max_std: int, optional
+    :return: The DataFrame with deviations added.
+    :rtype: pd.DataFrame
     """
     if not isinstance(df, pd.DataFrame):
         raise TypeError("Must be a pandas")
@@ -152,16 +145,16 @@ def add_standard_deviations(
         )
     return df
 
-
 def duplicate_rows(df: pd.DataFrame, sample_size=None) -> pd.DataFrame:
-    """Adds duplicate rows to a DataFrame.
+    """
+    Adds duplicate rows to a DataFrame.
 
-    Args:
-        df (pd.DataFrame): DataFrame to which duplicates will be added.
-        sample_size (int): number of rows to duplicate. A random percentage between 1% and 10% if not specified.
-
-    Returns:
-        pd.DataFrame: The DataFrame with duplicate rows added.
+    :param df: DataFrame to which duplicates will be added.
+    :type df: pd.DataFrame
+    :param sample_size: Number of rows to duplicate. A random percentage between 1% and 10% if not specified.
+    :type sample_size: int, optional
+    :return: The DataFrame with duplicate rows added.
+    :rtype: pd.DataFrame
     """
     if not isinstance(df, pd.DataFrame):
         raise TypeError("Must be a pandas")
@@ -172,21 +165,20 @@ def duplicate_rows(df: pd.DataFrame, sample_size=None) -> pd.DataFrame:
     new_rows = df.sample(sample_size)
     return pd.concat([df, new_rows])
 
-
-def add_nulls(
-    df: pd.DataFrame, columns=None, min_percent=1, max_percent=10
-) -> pd.DataFrame:
+def add_nulls(df: pd.DataFrame, columns=None, min_percent=1, max_percent=10) -> pd.DataFrame:
     """
     Inserts null values into specified DataFrame columns.
 
-    Args:
-        df (pd.DataFrame): The DataFrame to modify.
-        columns (list or str, optional): Specific columns to add nulls to. Defaults to all columns if not specified.
-        min_percent (int): Minimum percentage of null values to insert. Defaults to 1%
-        max_percent (int): Maximum percentage of null values to insert. Defaults to 10%
-
-    Returns:
-        pd.DataFrame: The DataFrame with null values inserted.
+    :param df: The DataFrame to modify.
+    :type df: pd.DataFrame
+    :param columns: Specific columns to add nulls to. Defaults to all columns if not specified.
+    :type columns: list or str, optional
+    :param min_percent: Minimum percentage of null values to insert. Defaults to 1%
+    :type min_percent: int, optional
+    :param max_percent: Maximum percentage of null values to insert. Defaults to 10%
+    :type max_percent: int, optional
+    :return: The DataFrame with null values inserted.
+    :rtype: pd.DataFrame
     """
     if not isinstance(df, pd.DataFrame):
         raise TypeError("Must be a pandas")
@@ -210,38 +202,38 @@ def add_nulls(
         df.loc[indices_to_none, col] = None
     return df
 
-
-def mess_it_up(
-    df: pd.DataFrame,
-    columns=None,
-    min_std=1,
-    max_std=5,
-    sample_size=None,
-    min_percent=1,
-    max_percent=10,
-    introduce_spag=True,
-    add_outliers=True,
-    add_std=True,
-    duplicate=True,
-    add_null=True
-) -> pd.DataFrame:
+def mess_it_up(df: pd.DataFrame, columns=None, min_std=1, max_std=5, sample_size=None,
+               min_percent=1, max_percent=10, introduce_spag=True, add_outliers=True,
+               add_std=True, duplicate=True, add_null=True) -> pd.DataFrame:
     """
     Applies several functions to add outliers, spelling errors and null values
 
-    Args:
-        df (pd.DataFrame): The DataFrame to modify.
-        columns (list or str, optional): Specific columns to add nulls to. Defaults to all columns if not specified.
-        min_std (int): Minimum number of standard deviations to add. Defaults to 1
-        max_std (int): Maximum number of standard deviations to add. Defaults to 5
-        sample_size (int, optional): Number of rows to duplicate. Randomly selected if not specified.
-        min_percent (int): Minimum percentage of null values to insert. Defaults to 1%
-        max_percent (int): Maximum percentage of null values to insert. Defaults to 10%
-        introduce_spag (bool): Adds spelling and grammar errors into string data. Defaults to True
-        add_outliers (bool): Adds outliers to numerical data. Defaults to True
-        add_std (bool): Adds standard deviations to the data. Defaults to True
-        duplicate (bool): Adds duplicate rows to the data. Defaults to True
-        add_null (bool): Adds null values to the dataset. Defaults to True
-
+    :param df: The DataFrame to modify.
+    :type df: pd.DataFrame
+    :param columns: Specific columns to modify. Defaults to all columns if not specified.
+    :type columns: list or str, optional
+    :param min_std: Minimum number of standard deviations to add. Defaults to 1
+    :type min_std: int, optional
+    :param max_std: Maximum number of standard deviations to add. Defaults to 5
+    :type max_std: int, optional
+    :param sample_size: Number of rows to duplicate. Randomly selected if not specified.
+    :type sample_size: int, optional
+    :param min_percent: Minimum percentage of null values to insert. Defaults to 1%
+    :type min_percent: int, optional
+    :param max_percent: Maximum percentage of null values to insert. Defaults to 10%
+    :type max_percent: int, optional
+    :param introduce_spag: Adds spelling and grammar errors into string data. Defaults to True
+    :type introduce_spag: bool, optional
+    :param add_outliers: Adds outliers to numerical data. Defaults to True
+    :type add_outliers: bool, optional
+    :param add_std: Adds standard deviations to the data. Defaults to True
+    :type add_std: bool, optional
+    :param duplicate: Adds duplicate rows to the data. Defaults to True
+    :type duplicate: bool, optional
+    :param add_null: Adds null values to the dataset. Defaults to True
+    :type add_null: bool, optional
+    :return: The modified DataFrame.
+    :rtype: pd.DataFrame
     """
     if not isinstance(df, pd.DataFrame):
         raise TypeError("Must be a pandas")
@@ -265,15 +257,12 @@ def mess_it_up(
         if add_outliers:
             df = add_or_subtract_outliers(df, numeric_cols)
         if add_std:
-            df = add_standard_deviations(
-                df, numeric_cols, min_std, max_std
-            )
+            df = add_standard_deviations(df, numeric_cols, min_std, max_std)
     if duplicate:
         df = duplicate_rows(df, sample_size)
     if add_null:
         df = add_nulls(df, columns, min_percent, max_percent)
     return df
-
 
 data = pd.DataFrame(
     {
