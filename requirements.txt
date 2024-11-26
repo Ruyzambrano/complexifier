@@ -5,3 +5,4 @@ shutup
 pytest
 pylint
 pytest-cov
+sphinx
