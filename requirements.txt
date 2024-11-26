@@ -6,3 +6,4 @@ pytest
 pylint
 pytest-cov
 sphinx
+furo
