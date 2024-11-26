@@ -8,5 +8,3 @@ testing.py
 .coverage
 .pytest_cache
 docs/build
-make.bat
-Makefile
