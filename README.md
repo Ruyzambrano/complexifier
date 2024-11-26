@@ -27,9 +27,12 @@ Complexifier solves this problem by allowing you take the former and turn it int
 pip install complexifier
 ```
 
-## Usage
+## Documentation
 
 [Go to the documentation](https://ruyzambrano.github.io/complexifier/)
+
+## Usage
+
 
 Once installed you can use `complexifier` to add mistakes and outliers to your data
 

@@ -195,7 +195,7 @@ For support or inquiries, please contact Ruy at ruyzambrano@gmail.com
 Changelog
 ---------
 
-Version 0.3.1
+Version 0.3.3
 
 Badges
 ------
