@@ -49,7 +49,7 @@ def introduce_spag_error(df: pd.DataFrame, columns=None) -> pd.DataFrame:
 
     Args:
         df (pd.DataFrame): The DataFrame to alter.
-        columns (list or str, optional): Column names to apply errors to. If not provided, defaults to all string columns.
+        columns (list or str): Column names to apply errors to. Defaults to all string columns.
 
     Returns:
         pd.DataFrame: The DataFrame with potential spelling errors introduced.
@@ -79,7 +79,7 @@ def add_or_subtract_outliers(df: pd.DataFrame, columns=None) -> pd.DataFrame:
 
     Args:
         df (pd.DataFrame): The DataFrame to modify.
-        columns (list or str, optional): Column names to adjust. Defaults to numeric columns if not specified.
+        columns (list or str): Column names to adjust. Defaults to all numeric columns if not specified.
 
     Returns:
         pd.DataFrame: The DataFrame with outliers added.
@@ -120,9 +120,9 @@ def add_standard_deviations(
 
     Args:
         df (pd.DataFrame): The DataFrame to manipulate.
-        columns (list or str, optional): Column names to modify. Defaults to numeric columns if not specified.
-        min_std (int): Minimum number of standard deviations to add.
-        max_std (int): Maximum number of standard deviations to add.
+        columns (list or str): Column names to modify. Defaults to numeric columns if not specified.
+        min_std (int): Minimum number of standard deviations to add. Defaults to 1
+        max_std (int): Maximum number of standard deviations to add. Defaults to 5
 
     Returns:
         pd.DataFrame: The DataFrame with deviations added.
@@ -158,7 +158,7 @@ def duplicate_rows(df: pd.DataFrame, sample_size=None) -> pd.DataFrame:
 
     Args:
         df (pd.DataFrame): DataFrame to which duplicates will be added.
-        sample_size (int, optional): Number of rows to duplicate. Randomly selected if not specified.
+        sample_size (int): number of rows to duplicate. A random percentage between 1% and 10% if not specified.
 
     Returns:
         pd.DataFrame: The DataFrame with duplicate rows added.
@@ -223,7 +223,7 @@ def mess_it_up(
     add_outliers=True,
     add_std=True,
     duplicate=True,
-    add_null=True,
+    add_null=True
 ) -> pd.DataFrame:
     """
     Applies several functions to add outliers, spelling errors and null values
@@ -236,6 +236,11 @@ def mess_it_up(
         sample_size (int, optional): Number of rows to duplicate. Randomly selected if not specified.
         min_percent (int): Minimum percentage of null values to insert. Defaults to 1%
         max_percent (int): Maximum percentage of null values to insert. Defaults to 10%
+        introduce_spag (bool): Adds spelling and grammar errors into string data. Defaults to True
+        add_outliers (bool): Adds outliers to numerical data. Defaults to True
+        add_std (bool): Adds standard deviations to the data. Defaults to True
+        duplicate (bool): Adds duplicate rows to the data. Defaults to True
+        add_null (bool): Adds null values to the dataset. Defaults to True
 
     """
     if not isinstance(df, pd.DataFrame):
@@ -254,15 +259,19 @@ def mess_it_up(
     string_cols = df[columns].select_dtypes(include="string").columns.to_list()
     numeric_cols = df[columns].select_dtypes(include="number").columns.to_list()
     if string_cols:
-        df = introduce_spag_error(df, columns=string_cols)
+        if introduce_spag:
+            df = introduce_spag_error(df, string_cols)
     if numeric_cols:
-        df = add_or_subtract_outliers(df, columns=numeric_cols)
-        df = add_standard_deviations(
-            df, columns=numeric_cols, min_std=min_std, max_std=max_std
-        )
-
-    df = duplicate_rows(df, sample_size)
-    df = add_nulls(df, columns, min_percent=min_percent, max_percent=max_percent)
+        if add_outliers:
+            df = add_or_subtract_outliers(df, numeric_cols)
+        if add_std:
+            df = add_standard_deviations(
+                df, numeric_cols, min_std, max_std
+            )
+    if duplicate:
+        df = duplicate_rows(df, sample_size)
+    if add_null:
+        df = add_nulls(df, columns, min_percent, max_percent)
     return df
 
 
