@@ -4,3 +4,4 @@ ipykernel
 shutup
 pytest
 pylint
+pytest-cov

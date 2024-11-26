@@ -1,6 +1,17 @@
 # Complexifier
 
-This makes your pandas dataframe even worse
+Make your pandas even worse!
+
+## Problem
+
+When teaching students to work with data, an important lesson is how to clean it.
+
+The problem with this is that there are two types of datasets available on the internet:
+
+1. Data that is good, but already cleaned
+2. Data that is not cleaned, but is terrible and incomprehensible
+
+Complexifier solves this problem by allowing you take the former and turn it into a better version of the latter!
 
 ## Dependencies
 
@@ -22,7 +33,9 @@ Once installed you can use `complexifier` to add mistakes and outliers to your d
 
 This library has several methods available:
 
-### `create_spag_error(word: str) -> str`
+### create_spag_error
+
+`create_spag_error(word: str) -> str`
 
 **Parameters**:
 - `word` (str): The original word to potentially alter.

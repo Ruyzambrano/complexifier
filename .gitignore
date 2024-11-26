@@ -7,3 +7,4 @@ __pycache__
 testing.py
 .coverage
 .pytest_cache
+docs/
