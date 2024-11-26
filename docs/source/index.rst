@@ -200,9 +200,6 @@ Version 0.3.3
 Badges
 ------
 
-.. image:: https://github.com/ruyzambrano/complexifier/workflows/CI/badge.svg
+.. image:: https://github.com/ruyzambrano/complexifier/workflows/Test/badge.svg
     :target: https://github.com/ruyzambrano/complexifier/actions
 
-
-.. image:: https://codecov.io/gh/ruyzambrano/complexifier/branch/main/graph/badge.svg
-    :target: https://ruyzambrano.github.io/complexifier/
