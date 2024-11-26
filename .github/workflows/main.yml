@@ -31,7 +31,8 @@ jobs:
         pytest --cov=complexifier 
 
     - name: Free Code Coverage
-      uses: SamuelCabralCruz/free-code-coverage/upload-github-repo@vX.X.X
+      uses: SamuelCabralCruz/free-code-coverage/upload-github-repo@v0.0.13
+
       with:
         github-repo: <github-repo> 
         project-name: <project-name> 
