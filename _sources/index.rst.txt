@@ -200,8 +200,9 @@ Version 0.3.3
 Badges
 ------
 
-.. image:: https://img.shields.io/badge/build-passing-brightgreen
-    :target: https://github.com/yourusername/complexifier
+.. image:: https://github.com/ruyzambrano/complexifier/workflows/CI/badge.svg
+    :target: https://github.com/ruyzambrano/complexifier/actions
 
-.. image:: https://img.shields.io/badge/coverage-95%25-green
-    :target: https://codecov.io/gh/yourusername/complexifier
+
+.. image:: https://codecov.io/gh/ruyzambrano/complexifier/branch/main/graph/badge.svg
+    :target: https://ruyzambrano.github.io/complexifier/
