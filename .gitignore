@@ -6,3 +6,4 @@ dist
 __pycache__
 testing.py
 .coverage
+.pytest_cache
