@@ -34,9 +34,20 @@ jobs:
       uses: SamuelCabralCruz/free-code-coverage/upload-github-repo@v0.0.13
 
       with:
-        github-repo: <github-repo> 
-        project-name: <project-name> 
-        coverage-metric: <coverage-metric>
+        github-repo: ruyzambrano/complexifier
+        project-name: complexifier 
+        coverage-metric: 
       env:
         GITHUB_TOKEN: ${{ secrets.PAT }}
-          
+
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: SamuelCabralCruz/free-code-coverage/update-github-repo@v0.0.13
+        with:
+          github-repo: ruyzambrano/complexifier
+          project-name: complexifier
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
+        
