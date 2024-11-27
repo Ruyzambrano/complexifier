@@ -9,4 +9,4 @@ sphinx
 furo
 groundwork-sphinx-theme
 sphinx-autobuild
-sphinx-rtd-theme
+sphinx_rtd_theme
