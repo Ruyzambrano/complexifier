@@ -263,12 +263,3 @@ def mess_it_up(df: pd.DataFrame, columns=None, min_std=1, max_std=5, sample_size
     if add_null:
         df = add_nulls(df, columns, min_percent, max_percent)
     return df
-
-data = pd.DataFrame(
-    {
-        "Name": ["Alice", "Bob", "Charlie", "David", "Eva"],
-        "Age": [28, 34, 29, 42, 25],
-        "City": ["New York", "Los Angeles", "Chicago", "Houston", "Phoenix"],
-        "Salary": [70000, 80000, 72000, 95000, 67000],
-    }
-)
