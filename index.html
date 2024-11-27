@@ -3,15 +3,19 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Complexifier &mdash; Complexifier 0.3.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
   
-      <script src="_static/jquery.js"></script>
-      <script src="_static/underscore.js"></script>
-      <script src="_static/doctools.js"></script>
-      <script src="_static/language_data.js"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=645b84c4"></script>
+      <script src="_static/doctools.js?v=888ff710"></script>
+      <script src="_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
@@ -45,13 +49,34 @@
 <li><a class="reference internal" href="#installation">Installation</a></li>
 <li><a class="reference internal" href="#usage">Usage</a></li>
 <li><a class="reference internal" href="#methods">Methods</a><ul>
-<li><a class="reference internal" href="#create-spag-error">create_spag_error</a></li>
-<li><a class="reference internal" href="#introduce-spag-error">introduce_spag_error</a></li>
-<li><a class="reference internal" href="#add-or-subtract-outliers">add_or_subtract_outliers</a></li>
-<li><a class="reference internal" href="#add-standard-deviations">add_standard_deviations</a></li>
-<li><a class="reference internal" href="#duplicate-rows">duplicate_rows</a></li>
-<li><a class="reference internal" href="#add-nulls">add_nulls</a></li>
-<li><a class="reference internal" href="#mess-it-up">mess_it_up</a></li>
+<li><a class="reference internal" href="#create-spag-error">create_spag_error</a><ul>
+<li><a class="reference internal" href="#complexifier.create_spag_error"><code class="docutils literal notranslate"><span class="pre">create_spag_error()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#introduce-spag-error">introduce_spag_error</a><ul>
+<li><a class="reference internal" href="#complexifier.introduce_spag_error"><code class="docutils literal notranslate"><span class="pre">introduce_spag_error()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#add-or-subtract-outliers">add_or_subtract_outliers</a><ul>
+<li><a class="reference internal" href="#complexifier.add_or_subtract_outliers"><code class="docutils literal notranslate"><span class="pre">add_or_subtract_outliers()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#add-standard-deviations">add_standard_deviations</a><ul>
+<li><a class="reference internal" href="#complexifier.add_standard_deviations"><code class="docutils literal notranslate"><span class="pre">add_standard_deviations()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#duplicate-rows">duplicate_rows</a><ul>
+<li><a class="reference internal" href="#complexifier.duplicate_rows"><code class="docutils literal notranslate"><span class="pre">duplicate_rows()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#add-nulls">add_nulls</a><ul>
+<li><a class="reference internal" href="#complexifier.add_nulls"><code class="docutils literal notranslate"><span class="pre">add_nulls()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#mess-it-up">mess_it_up</a><ul>
+<li><a class="reference internal" href="#complexifier.mess_it_up"><code class="docutils literal notranslate"><span class="pre">mess_it_up()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#contributing">Contributing</a></li>
@@ -87,12 +112,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="complexifier">
-<h1>Complexifier<a class="headerlink" href="#complexifier" title="Permalink to this headline">¶</a></h1>
+  <section id="complexifier">
+<h1>Complexifier<a class="headerlink" href="#complexifier" title="Permalink to this heading"></a></h1>
 <p>Make your pandas even worse!</p>
 <p>Complexifier is a Python library crafted to transform clean datasets into messy versions by introducing random errors and anomalies. This is particularly useful for educational purposes, where students learn to clean data through practical experience.</p>
-<div class="section" id="problem">
-<h2>Problem<a class="headerlink" href="#problem" title="Permalink to this headline">¶</a></h2>
+<section id="problem">
+<h2>Problem<a class="headerlink" href="#problem" title="Permalink to this heading"></a></h2>
 <p>When teaching students to work with data, an important lesson is how to clean it.</p>
 <p>The problem with this is that there are two types of datasets available on the internet:</p>
 <ol class="arabic simple">
@@ -100,9 +125,9 @@
 <li><p>Data that is not cleaned, but is terrible and incomprehensible</p></li>
 </ol>
 <p>Complexifier solves this problem by allowing you to take the former and turn it into a better version of the latter!</p>
-</div>
-<div class="section" id="dependencies">
-<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this heading"></a></h2>
 <p>Complexifier relies on the following packages:</p>
 <ul class="simple">
 <li><p><cite>pandas</cite></p></li>
@@ -110,94 +135,94 @@
 <li><p><cite>random</cite></p></li>
 </ul>
 <p>Ensure these dependencies are installed in your environment.</p>
-</div>
-<div class="section" id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h2>
 <p>You can install <cite>complexifier</cite> via <cite>pip</cite>:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip install complexifier
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>complexifier
 </pre></div>
 </div>
-</div>
-<div class="section" id="usage">
-<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading"></a></h2>
 <p>Once installed, use <cite>complexifier</cite> to add mistakes and simulate anomalies in your data. This library provides several methods:</p>
-</div>
-<div class="section" id="methods">
-<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="create-spag-error">
-<h3>create_spag_error<a class="headerlink" href="#create-spag-error" title="Permalink to this headline">¶</a></h3>
-<dl class="function">
-<dt id="complexifier.create_spag_error">
-<code class="sig-prename descclassname">complexifier.</code><code class="sig-name descname">create_spag_error</code><span class="sig-paren">(</span><em class="sig-param">word: str</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#complexifier.create_spag_error" title="Permalink to this definition">¶</a></dt>
+</section>
+<section id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this heading"></a></h2>
+<section id="create-spag-error">
+<h3>create_spag_error<a class="headerlink" href="#create-spag-error" title="Permalink to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="complexifier.create_spag_error">
+<span class="sig-prename descclassname"><span class="pre">complexifier.</span></span><span class="sig-name descname"><span class="pre">create_spag_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">word</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#complexifier.create_spag_error" title="Permalink to this definition"></a></dt>
 <dd><p>Gives a 10% chance to introduce a spelling error to a word.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>word</strong> (<em>str</em>) – The original word to potentially alter.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The original word or a word with a random spelling error.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str</p>
 </dd>
 </dl>
 </dd></dl>
 
-</div>
-<div class="section" id="introduce-spag-error">
-<h3>introduce_spag_error<a class="headerlink" href="#introduce-spag-error" title="Permalink to this headline">¶</a></h3>
-<dl class="function">
-<dt id="complexifier.introduce_spag_error">
-<code class="sig-prename descclassname">complexifier.</code><code class="sig-name descname">introduce_spag_error</code><span class="sig-paren">(</span><em class="sig-param">df: pandas.core.frame.DataFrame</em>, <em class="sig-param">columns=None</em><span class="sig-paren">)</span> &#x2192; pandas.core.frame.DataFrame<a class="headerlink" href="#complexifier.introduce_spag_error" title="Permalink to this definition">¶</a></dt>
+</section>
+<section id="introduce-spag-error">
+<h3>introduce_spag_error<a class="headerlink" href="#introduce-spag-error" title="Permalink to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="complexifier.introduce_spag_error">
+<span class="sig-prename descclassname"><span class="pre">complexifier.</span></span><span class="sig-name descname"><span class="pre">introduce_spag_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#complexifier.introduce_spag_error" title="Permalink to this definition"></a></dt>
 <dd><p>Applies random spelling errors to specified columns in a DataFrame.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>df</strong> (<em>pd.DataFrame</em>) – The DataFrame to alter.</p></li>
 <li><p><strong>columns</strong> (<em>list</em><em> or </em><em>str</em><em>, </em><em>optional</em>) – Column names to apply errors to. Defaults to all string columns.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The DataFrame with potential spelling errors introduced.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>pd.DataFrame</p>
 </dd>
 </dl>
 </dd></dl>
 
-</div>
-<div class="section" id="add-or-subtract-outliers">
-<h3>add_or_subtract_outliers<a class="headerlink" href="#add-or-subtract-outliers" title="Permalink to this headline">¶</a></h3>
-<dl class="function">
-<dt id="complexifier.add_or_subtract_outliers">
-<code class="sig-prename descclassname">complexifier.</code><code class="sig-name descname">add_or_subtract_outliers</code><span class="sig-paren">(</span><em class="sig-param">df: pandas.core.frame.DataFrame</em>, <em class="sig-param">columns=None</em><span class="sig-paren">)</span> &#x2192; pandas.core.frame.DataFrame<a class="headerlink" href="#complexifier.add_or_subtract_outliers" title="Permalink to this definition">¶</a></dt>
+</section>
+<section id="add-or-subtract-outliers">
+<h3>add_or_subtract_outliers<a class="headerlink" href="#add-or-subtract-outliers" title="Permalink to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="complexifier.add_or_subtract_outliers">
+<span class="sig-prename descclassname"><span class="pre">complexifier.</span></span><span class="sig-name descname"><span class="pre">add_or_subtract_outliers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#complexifier.add_or_subtract_outliers" title="Permalink to this definition"></a></dt>
 <dd><p>Adds or subtracts a random integer in columns of between 1% and 10% of the rows.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>df</strong> (<em>pd.DataFrame</em>) – The DataFrame to modify.</p></li>
 <li><p><strong>columns</strong> (<em>list</em><em> or </em><em>str</em><em>, </em><em>optional</em>) – Column names to adjust. Defaults to all numeric columns if not specified.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The DataFrame with outliers added.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>pd.DataFrame</p>
 </dd>
 </dl>
 </dd></dl>
 
-</div>
-<div class="section" id="add-standard-deviations">
-<h3>add_standard_deviations<a class="headerlink" href="#add-standard-deviations" title="Permalink to this headline">¶</a></h3>
-<dl class="function">
-<dt id="complexifier.add_standard_deviations">
-<code class="sig-prename descclassname">complexifier.</code><code class="sig-name descname">add_standard_deviations</code><span class="sig-paren">(</span><em class="sig-param">df: pandas.core.frame.DataFrame</em>, <em class="sig-param">columns=None</em>, <em class="sig-param">min_std=1</em>, <em class="sig-param">max_std=5</em><span class="sig-paren">)</span> &#x2192; pandas.core.frame.DataFrame<a class="headerlink" href="#complexifier.add_standard_deviations" title="Permalink to this definition">¶</a></dt>
+</section>
+<section id="add-standard-deviations">
+<h3>add_standard_deviations<a class="headerlink" href="#add-standard-deviations" title="Permalink to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="complexifier.add_standard_deviations">
+<span class="sig-prename descclassname"><span class="pre">complexifier.</span></span><span class="sig-name descname"><span class="pre">add_standard_deviations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_std</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_std</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#complexifier.add_standard_deviations" title="Permalink to this definition"></a></dt>
 <dd><p>Adds random deviations to entries in specified numeric columns to simulate data anomalies.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>df</strong> (<em>pd.DataFrame</em>) – The DataFrame to manipulate.</p></li>
 <li><p><strong>columns</strong> (<em>list</em><em> or </em><em>str</em><em>, </em><em>optional</em>) – Column names to modify. Defaults to numeric columns if not specified.</p></li>
@@ -205,47 +230,47 @@
 <li><p><strong>max_std</strong> (<em>int</em><em>, </em><em>optional</em>) – Maximum number of standard deviations to add. Defaults to 5</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The DataFrame with deviations added.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>pd.DataFrame</p>
 </dd>
 </dl>
 </dd></dl>
 
-</div>
-<div class="section" id="duplicate-rows">
-<h3>duplicate_rows<a class="headerlink" href="#duplicate-rows" title="Permalink to this headline">¶</a></h3>
-<dl class="function">
-<dt id="complexifier.duplicate_rows">
-<code class="sig-prename descclassname">complexifier.</code><code class="sig-name descname">duplicate_rows</code><span class="sig-paren">(</span><em class="sig-param">df: pandas.core.frame.DataFrame</em>, <em class="sig-param">sample_size=None</em><span class="sig-paren">)</span> &#x2192; pandas.core.frame.DataFrame<a class="headerlink" href="#complexifier.duplicate_rows" title="Permalink to this definition">¶</a></dt>
+</section>
+<section id="duplicate-rows">
+<h3>duplicate_rows<a class="headerlink" href="#duplicate-rows" title="Permalink to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="complexifier.duplicate_rows">
+<span class="sig-prename descclassname"><span class="pre">complexifier.</span></span><span class="sig-name descname"><span class="pre">duplicate_rows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#complexifier.duplicate_rows" title="Permalink to this definition"></a></dt>
 <dd><p>Adds duplicate rows to a DataFrame.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>df</strong> (<em>pd.DataFrame</em>) – DataFrame to which duplicates will be added.</p></li>
 <li><p><strong>sample_size</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of rows to duplicate. A random percentage between 1% and 10% if not specified.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The DataFrame with duplicate rows added.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>pd.DataFrame</p>
 </dd>
 </dl>
 </dd></dl>
 
-</div>
-<div class="section" id="add-nulls">
-<h3>add_nulls<a class="headerlink" href="#add-nulls" title="Permalink to this headline">¶</a></h3>
-<dl class="function">
-<dt id="complexifier.add_nulls">
-<code class="sig-prename descclassname">complexifier.</code><code class="sig-name descname">add_nulls</code><span class="sig-paren">(</span><em class="sig-param">df: pandas.core.frame.DataFrame</em>, <em class="sig-param">columns=None</em>, <em class="sig-param">min_percent=1</em>, <em class="sig-param">max_percent=10</em><span class="sig-paren">)</span> &#x2192; pandas.core.frame.DataFrame<a class="headerlink" href="#complexifier.add_nulls" title="Permalink to this definition">¶</a></dt>
+</section>
+<section id="add-nulls">
+<h3>add_nulls<a class="headerlink" href="#add-nulls" title="Permalink to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="complexifier.add_nulls">
+<span class="sig-prename descclassname"><span class="pre">complexifier.</span></span><span class="sig-name descname"><span class="pre">add_nulls</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_percent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_percent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#complexifier.add_nulls" title="Permalink to this definition"></a></dt>
 <dd><p>Inserts null values into specified DataFrame columns.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>df</strong> (<em>pd.DataFrame</em>) – The DataFrame to modify.</p></li>
 <li><p><strong>columns</strong> (<em>list</em><em> or </em><em>str</em><em>, </em><em>optional</em>) – Specific columns to add nulls to. Defaults to all columns if not specified.</p></li>
@@ -253,24 +278,24 @@
 <li><p><strong>max_percent</strong> (<em>int</em><em>, </em><em>optional</em>) – Maximum percentage of null values to insert. Defaults to 10%</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The DataFrame with null values inserted.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>pd.DataFrame</p>
 </dd>
 </dl>
 </dd></dl>
 
-</div>
-<div class="section" id="mess-it-up">
-<h3>mess_it_up<a class="headerlink" href="#mess-it-up" title="Permalink to this headline">¶</a></h3>
-<dl class="function">
-<dt id="complexifier.mess_it_up">
-<code class="sig-prename descclassname">complexifier.</code><code class="sig-name descname">mess_it_up</code><span class="sig-paren">(</span><em class="sig-param">df: pandas.core.frame.DataFrame</em>, <em class="sig-param">columns=None</em>, <em class="sig-param">min_std=1</em>, <em class="sig-param">max_std=5</em>, <em class="sig-param">sample_size=None</em>, <em class="sig-param">min_percent=1</em>, <em class="sig-param">max_percent=10</em>, <em class="sig-param">introduce_spag=True</em>, <em class="sig-param">add_outliers=True</em>, <em class="sig-param">add_std=True</em>, <em class="sig-param">duplicate=True</em>, <em class="sig-param">add_null=True</em><span class="sig-paren">)</span> &#x2192; pandas.core.frame.DataFrame<a class="headerlink" href="#complexifier.mess_it_up" title="Permalink to this definition">¶</a></dt>
+</section>
+<section id="mess-it-up">
+<h3>mess_it_up<a class="headerlink" href="#mess-it-up" title="Permalink to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="complexifier.mess_it_up">
+<span class="sig-prename descclassname"><span class="pre">complexifier.</span></span><span class="sig-name descname"><span class="pre">mess_it_up</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_std</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_std</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_percent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_percent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">introduce_spag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_outliers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_std</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duplicate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_null</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#complexifier.mess_it_up" title="Permalink to this definition"></a></dt>
 <dd><p>Applies several functions to add outliers, spelling errors and null values</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>df</strong> (<em>pd.DataFrame</em>) – The DataFrame to modify.</p></li>
 <li><p><strong>columns</strong> (<em>list</em><em> or </em><em>str</em><em>, </em><em>optional</em>) – Specific columns to modify. Defaults to all columns if not specified.</p></li>
@@ -286,38 +311,38 @@
 <li><p><strong>add_null</strong> (<em>bool</em><em>, </em><em>optional</em>) – Adds null values to the dataset. Defaults to True</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The modified DataFrame.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>pd.DataFrame</p>
 </dd>
 </dl>
 </dd></dl>
 
-</div>
-</div>
-<div class="section" id="contributing">
-<h2>Contributing<a class="headerlink" href="#contributing" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="contributing">
+<h2>Contributing<a class="headerlink" href="#contributing" title="Permalink to this heading"></a></h2>
 <p>Feel free to contribute by submitting a pull request on GitHub. For large changes, please open an issue to discuss before implementing changes.</p>
-</div>
-<div class="section" id="license">
-<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this heading"></a></h2>
 <p>This project is licensed under the MIT License. See the LICENSE file for details.</p>
-</div>
-<div class="section" id="contact-information">
-<h2>Contact Information<a class="headerlink" href="#contact-information" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="contact-information">
+<h2>Contact Information<a class="headerlink" href="#contact-information" title="Permalink to this heading"></a></h2>
 <p>For support or inquiries, please contact Ruy at <a class="reference external" href="mailto:ruyzambrano&#37;&#52;&#48;gmail&#46;com">ruyzambrano<span>&#64;</span>gmail<span>&#46;</span>com</a></p>
-</div>
-<div class="section" id="changelog">
-<h2>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="changelog">
+<h2>Changelog<a class="headerlink" href="#changelog" title="Permalink to this heading"></a></h2>
 <p>Version 0.3.3</p>
-</div>
-<div class="section" id="badges">
-<h2>Badges<a class="headerlink" href="#badges" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="badges">
+<h2>Badges<a class="headerlink" href="#badges" title="Permalink to this heading"></a></h2>
 <a class="reference external image-reference" href="https://github.com/ruyzambrano/complexifier/actions"><img alt="https://github.com/ruyzambrano/complexifier/workflows/Test/badge.svg" src="https://github.com/ruyzambrano/complexifier/workflows/Test/badge.svg" /></a>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
