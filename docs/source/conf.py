@@ -16,8 +16,7 @@ release = '0.3.1'
 
 extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.napoleon',
-              'sphinx.ext.githubpages',
-              'sphinx_rtd_theme']
+              'sphinx.ext.githubpages']
 
 templates_path = ['_templates']
 html_static_path = ['_static']
