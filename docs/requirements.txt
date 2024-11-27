@@ -1,0 +1,11 @@
+pandas
+typo
+ipykernel
+shutup
+pytest
+pylint
+pytest-cov
+sphinx
+furo
+groundwork-sphinx-theme
+sphinx-autobuild 
