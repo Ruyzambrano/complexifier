@@ -28,11 +28,7 @@ sys.path.insert(0, os.path.abspath('../../src'))
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
+
 html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
-
-
-
-pygments_style = 'sphinx'
-
 html_logo = "assets/complexifier.jpeg"
