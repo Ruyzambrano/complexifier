@@ -8,3 +8,4 @@ pytest-cov
 sphinx
 furo
 groundwork-sphinx-theme
+sphinx-autobuild 
