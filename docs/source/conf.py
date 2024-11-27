@@ -19,7 +19,6 @@ extensions = ['sphinx.ext.autodoc',
             #   'sphinx.ext.githubpages'
               ]
 
-templates_path = ['_templates']
 exclude_patterns = []
 
 import os
@@ -30,5 +29,4 @@ sys.path.insert(0, os.path.abspath('../../src'))
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = 'nature'
-html_static_path = ['_static']
 html_logo = "assets/complexifier.jpeg"
