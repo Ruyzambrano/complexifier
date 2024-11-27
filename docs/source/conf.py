@@ -16,7 +16,8 @@ release = '0.3.1'
 
 extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.napoleon',
-              'sphinx.ext.githubpages']
+              'sphinx.ext.githubpages',
+              'sphinx_rtd_theme']
 
 templates_path = ['_templates']
 html_static_path = ['_static']
@@ -28,8 +29,6 @@ sys.path.insert(0, os.path.abspath('../../src'))
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
-
-import sphinx_rtd_theme
 
 html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
