@@ -15,31 +15,30 @@ def create_spag_error(word: str) -> str:
         return word
     error_object = StrErrer(word)
     weight = random.randint(1, 100)
-    match weight:
-        case 1:
-            return error_object.missing_char().result
-        case 2:
-            return error_object.char_swap().result
-        case 3:
-            return error_object.extra_char().result
-        case 4:
-            return error_object.nearby_char().result
-        case 5:
-            return error_object.similar_char().result
-        case 6:
-            return error_object.random_space().result
-        case 7:
-            return error_object.repeated_char().result
-        case 8:
-            return word.lower()
-        case 9:
-            return word.upper()
-        case 10:
-            return "".join(
-                [char.upper() if random.randint(0, 100) < 10 else char for char in word]
-            )
-        case _:
-            return word
+    if weight == 1:
+        return error_object.missing_char().result
+    elif weight == 2:
+        return error_object.char_swap().result
+    elif weight == 3:
+        return error_object.extra_char().result
+    elif weight ==  4:
+        return error_object.nearby_char().result
+    elif weight ==  5:
+        return error_object.similar_char().result
+    elif weight ==  6:
+        return error_object.random_space().result
+    elif weight ==  7:
+        return error_object.repeated_char().result
+    elif weight ==  8:
+        return word.lower()
+    elif weight ==  9:
+        return word.upper()
+    elif weight ==  10:
+        return "".join(
+            [char.upper() if random.randint(0, 100) < 10 else char for char in word]
+        )
+    else:
+        return word
 
 def introduce_spag_error(df: pd.DataFrame, columns=None) -> pd.DataFrame:
     """
