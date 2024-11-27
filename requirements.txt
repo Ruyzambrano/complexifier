@@ -5,6 +5,7 @@ shutup
 pytest
 pylint
 pytest-cov
-sphinx
+sphinx>=6,<9
 sphinx-autobuild
 sphinx-rtd-theme
+docutils>=0.18,<0.22
