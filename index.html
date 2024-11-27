@@ -71,101 +71,24 @@
 <h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="create-spag-error">
 <h3>create_spag_error<a class="headerlink" href="#create-spag-error" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">create_spag_error</span><span class="p">(</span><span class="n">word</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span>
-</pre></div>
-</div>
-<p>Introduces a 10% chance of a random spelling error in a given word, helpful for simulating typos.</p>
-<p><strong>Parameters</strong>:</p>
-<ul class="simple">
-<li><p><cite>word</cite> (str): The original word to potentially alter.</p></li>
-</ul>
 </div>
 <div class="section" id="introduce-spag-error">
 <h3>introduce_spag_error<a class="headerlink" href="#introduce-spag-error" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">introduce_spag_error</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
-</pre></div>
-</div>
-<p>Applies <cite>create_spag_error</cite> to each string entry in specified DataFrame columns, introducing random spelling errors with a 10% probability.</p>
-<p><strong>Parameters</strong>:</p>
-<ul class="simple">
-<li><p><cite>df</cite> (pd.DataFrame): The DataFrame to alter.</p></li>
-<li><p><cite>columns</cite> (list or str): Column names to apply errors to. Defaults to all string columns.</p></li>
-</ul>
 </div>
 <div class="section" id="add-or-subtract-outliers">
 <h3>add_or_subtract_outliers<a class="headerlink" href="#add-or-subtract-outliers" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">add_or_subtract_outliers</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
-</pre></div>
-</div>
-<p>Randomly adds or subtracts values in specified numeric columns, simulating outliers in 1% to 10% of rows.</p>
-<p><strong>Parameters</strong>:</p>
-<ul class="simple">
-<li><p><cite>df</cite> (pd.DataFrame): The DataFrame to modify.</p></li>
-<li><p><cite>columns</cite> (list or str): Column names to adjust. Defaults to all numeric columns if not specified.</p></li>
-</ul>
 </div>
 <div class="section" id="add-standard-deviations">
 <h3>add_standard_deviations<a class="headerlink" href="#add-standard-deviations" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">add_standard_deviations</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">min_std</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_std</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
-</pre></div>
-</div>
-<p>Adds between 1 to 5 standard deviations to random entries in numeric columns to simulate data anomalies.</p>
-<p><strong>Parameters</strong>:</p>
-<ul class="simple">
-<li><p><cite>df</cite> (pd.DataFrame): The DataFrame to manipulate.</p></li>
-<li><p><cite>columns</cite> (list or str): Column names to modify. Defaults to numeric columns if not specified.</p></li>
-<li><p><cite>min_std</cite> (int): Minimum number of standard deviations to add. Defaults to 1.</p></li>
-<li><p><cite>max_std</cite> (int): Maximum number of standard deviations to add. Defaults to 5.</p></li>
-</ul>
 </div>
 <div class="section" id="duplicate-rows">
 <h3>duplicate_rows<a class="headerlink" href="#duplicate-rows" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">duplicate_rows</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">sample_size</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
-</pre></div>
-</div>
-<p>Introduces duplicate rows into a DataFrame, useful for testing deduplication processes.</p>
-<p><strong>Parameters</strong>:</p>
-<ul class="simple">
-<li><p><cite>df</cite> (pd.DataFrame): DataFrame to which duplicates will be added.</p></li>
-<li><p><cite>sample_size</cite> (int): Number of rows to duplicate. A random percentage between 1% and 10% if not specified.</p></li>
-</ul>
 </div>
 <div class="section" id="add-nulls">
 <h3>add_nulls<a class="headerlink" href="#add-nulls" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">add_nulls</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">min_percent</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_percent</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
-</pre></div>
-</div>
-<p>Inserts null values into specified DataFrame columns, simulating missing data conditions.</p>
-<p><strong>Parameters</strong>:</p>
-<ul class="simple">
-<li><p><cite>df</cite> (pd.DataFrame): The DataFrame to modify.</p></li>
-<li><p><cite>columns</cite> (list or str): Specific columns to add nulls to. Defaults to all columns if not specified.</p></li>
-<li><p><cite>min_percent</cite> (int): Minimum percentage of null values to insert. Defaults to 1%.</p></li>
-<li><p><cite>max_percent</cite> (int): Maximum percentage of null values to insert. Defaults to 10%.</p></li>
-</ul>
 </div>
 <div class="section" id="mess-it-up">
 <h3>mess_it_up<a class="headerlink" href="#mess-it-up" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mess_it_up</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">min_std</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_std</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sample_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">min_percent</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_percent</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-           <span class="n">introduce_spag</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">add_outliers</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">add_std</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">duplicate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">add_null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
-</pre></div>
-</div>
-<p>Integrates all methods to add errors comprehensively to the DataFrame.</p>
-<p><strong>Parameters</strong>:</p>
-<ul class="simple">
-<li><p><cite>df</cite> (pd.DataFrame): The DataFrame to modify.</p></li>
-<li><p><cite>columns</cite> (list or str): Specific columns to add nulls to. Defaults to all columns if not specified.</p></li>
-<li><p><cite>min_std</cite> (int): Minimum number of standard deviations to add. Defaults to 1.</p></li>
-<li><p><cite>max_std</cite> (int): Maximum number of standard deviations to add. Defaults to 5.</p></li>
-<li><p><cite>sample_size</cite> (int): Number of rows to duplicate. Randomly selected if not specified.</p></li>
-<li><p><cite>min_percent</cite> (int): Minimum percentage of null values to insert. Defaults to 1%.</p></li>
-<li><p><cite>max_percent</cite> (int): Maximum percentage of null values to insert. Defaults to 10%.</p></li>
-<li><p><cite>introduce_spag</cite> (bool): Adds spelling and grammar errors into string data. Defaults to True.</p></li>
-<li><p><cite>add_outliers</cite> (bool): Adds outliers to numerical data. Defaults to True.</p></li>
-<li><p><cite>add_std</cite> (bool): Adds standard deviations to the data. Defaults to True.</p></li>
-<li><p><cite>duplicate</cite> (bool): Adds duplicate rows to the data. Defaults to True.</p></li>
-<li><p><cite>add_null</cite> (bool): Adds null values to the dataset. Defaults to True.</p></li>
-</ul>
 </div>
 </div>
 <div class="section" id="contributing">
