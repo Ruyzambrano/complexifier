@@ -30,6 +30,6 @@ sys.path.insert(0, os.path.abspath('../../src'))
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = 'furo'
+html_theme = 'nature'
 html_static_path = ['_static']
 html_logo = "assets/complexifier.jpeg"
