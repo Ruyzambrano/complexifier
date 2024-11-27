@@ -7,3 +7,4 @@ pylint
 pytest-cov
 sphinx
 sphinx-autobuild
+sphinx-rtd-theme
