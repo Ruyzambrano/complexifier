@@ -69,24 +69,175 @@
 <h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="create-spag-error">
 <h3>create_spag_error<a class="headerlink" href="#create-spag-error" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="complexifier.create_spag_error">
+<code class="sig-prename descclassname">complexifier.</code><code class="sig-name descname">create_spag_error</code><span class="sig-paren">(</span><em class="sig-param">word: str</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#complexifier.create_spag_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gives a 10% chance to introduce a spelling error to a word.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>word</strong> (<em>str</em>) – The original word to potentially alter.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The original word or a word with a random spelling error.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 <div class="section" id="introduce-spag-error">
 <h3>introduce_spag_error<a class="headerlink" href="#introduce-spag-error" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="complexifier.introduce_spag_error">
+<code class="sig-prename descclassname">complexifier.</code><code class="sig-name descname">introduce_spag_error</code><span class="sig-paren">(</span><em class="sig-param">df: pandas.core.frame.DataFrame</em>, <em class="sig-param">columns=None</em><span class="sig-paren">)</span> &#x2192; pandas.core.frame.DataFrame<a class="headerlink" href="#complexifier.introduce_spag_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies random spelling errors to specified columns in a DataFrame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – The DataFrame to alter.</p></li>
+<li><p><strong>columns</strong> (<em>list</em><em> or </em><em>str</em><em>, </em><em>optional</em>) – Column names to apply errors to. Defaults to all string columns.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The DataFrame with potential spelling errors introduced.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 <div class="section" id="add-or-subtract-outliers">
 <h3>add_or_subtract_outliers<a class="headerlink" href="#add-or-subtract-outliers" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="complexifier.add_or_subtract_outliers">
+<code class="sig-prename descclassname">complexifier.</code><code class="sig-name descname">add_or_subtract_outliers</code><span class="sig-paren">(</span><em class="sig-param">df: pandas.core.frame.DataFrame</em>, <em class="sig-param">columns=None</em><span class="sig-paren">)</span> &#x2192; pandas.core.frame.DataFrame<a class="headerlink" href="#complexifier.add_or_subtract_outliers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds or subtracts a random integer in columns of between 1% and 10% of the rows.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – The DataFrame to modify.</p></li>
+<li><p><strong>columns</strong> (<em>list</em><em> or </em><em>str</em><em>, </em><em>optional</em>) – Column names to adjust. Defaults to all numeric columns if not specified.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The DataFrame with outliers added.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 <div class="section" id="add-standard-deviations">
 <h3>add_standard_deviations<a class="headerlink" href="#add-standard-deviations" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="complexifier.add_standard_deviations">
+<code class="sig-prename descclassname">complexifier.</code><code class="sig-name descname">add_standard_deviations</code><span class="sig-paren">(</span><em class="sig-param">df: pandas.core.frame.DataFrame</em>, <em class="sig-param">columns=None</em>, <em class="sig-param">min_std=1</em>, <em class="sig-param">max_std=5</em><span class="sig-paren">)</span> &#x2192; pandas.core.frame.DataFrame<a class="headerlink" href="#complexifier.add_standard_deviations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds random deviations to entries in specified numeric columns to simulate data anomalies.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – The DataFrame to manipulate.</p></li>
+<li><p><strong>columns</strong> (<em>list</em><em> or </em><em>str</em><em>, </em><em>optional</em>) – Column names to modify. Defaults to numeric columns if not specified.</p></li>
+<li><p><strong>min_std</strong> (<em>int</em><em>, </em><em>optional</em>) – Minimum number of standard deviations to add. Defaults to 1</p></li>
+<li><p><strong>max_std</strong> (<em>int</em><em>, </em><em>optional</em>) – Maximum number of standard deviations to add. Defaults to 5</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The DataFrame with deviations added.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 <div class="section" id="duplicate-rows">
 <h3>duplicate_rows<a class="headerlink" href="#duplicate-rows" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="complexifier.duplicate_rows">
+<code class="sig-prename descclassname">complexifier.</code><code class="sig-name descname">duplicate_rows</code><span class="sig-paren">(</span><em class="sig-param">df: pandas.core.frame.DataFrame</em>, <em class="sig-param">sample_size=None</em><span class="sig-paren">)</span> &#x2192; pandas.core.frame.DataFrame<a class="headerlink" href="#complexifier.duplicate_rows" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds duplicate rows to a DataFrame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – DataFrame to which duplicates will be added.</p></li>
+<li><p><strong>sample_size</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of rows to duplicate. A random percentage between 1% and 10% if not specified.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The DataFrame with duplicate rows added.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 <div class="section" id="add-nulls">
 <h3>add_nulls<a class="headerlink" href="#add-nulls" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="complexifier.add_nulls">
+<code class="sig-prename descclassname">complexifier.</code><code class="sig-name descname">add_nulls</code><span class="sig-paren">(</span><em class="sig-param">df: pandas.core.frame.DataFrame</em>, <em class="sig-param">columns=None</em>, <em class="sig-param">min_percent=1</em>, <em class="sig-param">max_percent=10</em><span class="sig-paren">)</span> &#x2192; pandas.core.frame.DataFrame<a class="headerlink" href="#complexifier.add_nulls" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inserts null values into specified DataFrame columns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – The DataFrame to modify.</p></li>
+<li><p><strong>columns</strong> (<em>list</em><em> or </em><em>str</em><em>, </em><em>optional</em>) – Specific columns to add nulls to. Defaults to all columns if not specified.</p></li>
+<li><p><strong>min_percent</strong> (<em>int</em><em>, </em><em>optional</em>) – Minimum percentage of null values to insert. Defaults to 1%</p></li>
+<li><p><strong>max_percent</strong> (<em>int</em><em>, </em><em>optional</em>) – Maximum percentage of null values to insert. Defaults to 10%</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The DataFrame with null values inserted.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 <div class="section" id="mess-it-up">
 <h3>mess_it_up<a class="headerlink" href="#mess-it-up" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="complexifier.mess_it_up">
+<code class="sig-prename descclassname">complexifier.</code><code class="sig-name descname">mess_it_up</code><span class="sig-paren">(</span><em class="sig-param">df: pandas.core.frame.DataFrame</em>, <em class="sig-param">columns=None</em>, <em class="sig-param">min_std=1</em>, <em class="sig-param">max_std=5</em>, <em class="sig-param">sample_size=None</em>, <em class="sig-param">min_percent=1</em>, <em class="sig-param">max_percent=10</em>, <em class="sig-param">introduce_spag=True</em>, <em class="sig-param">add_outliers=True</em>, <em class="sig-param">add_std=True</em>, <em class="sig-param">duplicate=True</em>, <em class="sig-param">add_null=True</em><span class="sig-paren">)</span> &#x2192; pandas.core.frame.DataFrame<a class="headerlink" href="#complexifier.mess_it_up" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies several functions to add outliers, spelling errors and null values</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – The DataFrame to modify.</p></li>
+<li><p><strong>columns</strong> (<em>list</em><em> or </em><em>str</em><em>, </em><em>optional</em>) – Specific columns to modify. Defaults to all columns if not specified.</p></li>
+<li><p><strong>min_std</strong> (<em>int</em><em>, </em><em>optional</em>) – Minimum number of standard deviations to add. Defaults to 1</p></li>
+<li><p><strong>max_std</strong> (<em>int</em><em>, </em><em>optional</em>) – Maximum number of standard deviations to add. Defaults to 5</p></li>
+<li><p><strong>sample_size</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of rows to duplicate. Randomly selected if not specified.</p></li>
+<li><p><strong>min_percent</strong> (<em>int</em><em>, </em><em>optional</em>) – Minimum percentage of null values to insert. Defaults to 1%</p></li>
+<li><p><strong>max_percent</strong> (<em>int</em><em>, </em><em>optional</em>) – Maximum percentage of null values to insert. Defaults to 10%</p></li>
+<li><p><strong>introduce_spag</strong> (<em>bool</em><em>, </em><em>optional</em>) – Adds spelling and grammar errors into string data. Defaults to True</p></li>
+<li><p><strong>add_outliers</strong> (<em>bool</em><em>, </em><em>optional</em>) – Adds outliers to numerical data. Defaults to True</p></li>
+<li><p><strong>add_std</strong> (<em>bool</em><em>, </em><em>optional</em>) – Adds standard deviations to the data. Defaults to True</p></li>
+<li><p><strong>duplicate</strong> (<em>bool</em><em>, </em><em>optional</em>) – Adds duplicate rows to the data. Defaults to True</p></li>
+<li><p><strong>add_null</strong> (<em>bool</em><em>, </em><em>optional</em>) – Adds null values to the dataset. Defaults to True</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The modified DataFrame.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 </div>
 <div class="section" id="contributing">
