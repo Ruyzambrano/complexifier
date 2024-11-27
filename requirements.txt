@@ -7,6 +7,7 @@ pylint
 pytest-cov
 sphinx
 furo
-groundwork-sphinx-theme
 sphinx-autobuild
 sphinx_rtd_theme
+sphinx-rtd-theme
+sphinxcontrib-jquery
