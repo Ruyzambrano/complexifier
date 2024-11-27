@@ -20,7 +20,6 @@ extensions = ['sphinx.ext.autodoc',
               ]
 
 templates_path = ['_templates']
-html_static_path = ['_static']
 exclude_patterns = []
 
 import os
