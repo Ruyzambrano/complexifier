@@ -16,7 +16,7 @@ release = '0.3.1'
 
 extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.napoleon',
-            #   'sphinx.ext.githubpages'
+              'sphinx.ext.githubpages'
               ]
 
 exclude_patterns = []
