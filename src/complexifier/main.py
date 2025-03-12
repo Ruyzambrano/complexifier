@@ -2,6 +2,7 @@ import random
 from typo import StrErrer
 import pandas as pd
 
+
 def create_spag_error(word: str) -> str:
     """
     Gives a 10% chance to introduce a spelling error to a word.
@@ -21,24 +22,25 @@ def create_spag_error(word: str) -> str:
         return error_object.char_swap().result
     elif weight == 3:
         return error_object.extra_char().result
-    elif weight ==  4:
+    elif weight == 4:
         return error_object.nearby_char().result
-    elif weight ==  5:
+    elif weight == 5:
         return error_object.similar_char().result
-    elif weight ==  6:
+    elif weight == 6:
         return error_object.random_space().result
-    elif weight ==  7:
+    elif weight == 7:
         return error_object.repeated_char().result
-    elif weight ==  8:
+    elif weight == 8:
         return word.lower()
-    elif weight ==  9:
+    elif weight == 9:
         return word.upper()
-    elif weight ==  10:
+    elif weight == 10:
         return "".join(
             [char.upper() if random.randint(0, 100) < 10 else char for char in word]
         )
     else:
         return word
+
 
 def introduce_spag_error(df: pd.DataFrame, columns=None) -> pd.DataFrame:
     """
@@ -69,6 +71,7 @@ def introduce_spag_error(df: pd.DataFrame, columns=None) -> pd.DataFrame:
             raise TypeError(f"{col} is {df[col].dtype}, not a string type")
         df[col] = df[col].apply(create_spag_error)
     return df
+
 
 def add_or_subtract_outliers(df: pd.DataFrame, columns=None) -> pd.DataFrame:
     """
@@ -104,7 +107,10 @@ def add_or_subtract_outliers(df: pd.DataFrame, columns=None) -> pd.DataFrame:
         )
     return df
 
-def add_standard_deviations(df: pd.DataFrame, columns=None, min_std=1, max_std=5) -> pd.DataFrame:
+
+def add_standard_deviations(
+    df: pd.DataFrame, columns=None, min_std=1, max_std=5
+) -> pd.DataFrame:
     """
     Adds random deviations to entries in specified numeric columns to simulate data anomalies.
 
@@ -144,6 +150,7 @@ def add_standard_deviations(df: pd.DataFrame, columns=None, min_std=1, max_std=5
         )
     return df
 
+
 def duplicate_rows(df: pd.DataFrame, sample_size=None) -> pd.DataFrame:
     """
     Adds duplicate rows to a DataFrame.
@@ -164,7 +171,10 @@ def duplicate_rows(df: pd.DataFrame, sample_size=None) -> pd.DataFrame:
     new_rows = df.sample(sample_size)
     return pd.concat([df, new_rows])
 
-def add_nulls(df: pd.DataFrame, columns=None, min_percent=1, max_percent=10) -> pd.DataFrame:
+
+def add_nulls(
+    df: pd.DataFrame, columns=None, min_percent=1, max_percent=10
+) -> pd.DataFrame:
     """
     Inserts null values into specified DataFrame columns.
 
@@ -201,9 +211,21 @@ def add_nulls(df: pd.DataFrame, columns=None, min_percent=1, max_percent=10) -> 
         df.loc[indices_to_none, col] = None
     return df
 
-def mess_it_up(df: pd.DataFrame, columns=None, min_std=1, max_std=5, sample_size=None,
-               min_percent=1, max_percent=10, introduce_spag=True, add_outliers=True,
-               add_std=True, duplicate=True, add_null=True) -> pd.DataFrame:
+
+def mess_it_up(
+    df: pd.DataFrame,
+    columns=None,
+    min_std=1,
+    max_std=5,
+    sample_size=None,
+    min_percent=1,
+    max_percent=10,
+    introduce_spag=True,
+    add_outliers=True,
+    add_std=True,
+    duplicate=True,
+    add_null=True,
+) -> pd.DataFrame:
     """
     Applies several functions to add outliers, spelling errors and null values
 
