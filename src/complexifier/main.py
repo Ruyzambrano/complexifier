@@ -244,8 +244,10 @@ def add_datetime_errors(df: pd.DataFrame,
         sample_size /= 10
     
     affected_row_count = round(len(df) * (sample_size if sample_size < 1 else 1))
+    df[columns] = df[columns].astype(str)
     for col in columns:
         indices_to_affect = df.sample(affected_row_count).index
+
         df.loc[indices_to_affect, col] = df.loc[indices_to_affect, col].apply(
             lambda row: datetime_to_disorganised_string(row, format_code, wrong_order))
     return df
@@ -262,7 +264,7 @@ def datetime_to_disorganised_string(date_point: datetime,
     :type format_code: str, Optional
     """
     if not isinstance(date_point, datetime):
-        raise TypeError(f"date_point must be type Datetime, not {type(date_point)}")
+        date_point = pd.to_datetime(date_point)
     if not format_code:
         join_string = ["-", " ", ":"]
         format_codes = ["%Y", "%m", "%d", "%H", "%M", "%S"]
