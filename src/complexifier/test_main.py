@@ -1,4 +1,5 @@
 import pytest
+from datetime import datetime
 from unittest.mock import patch
 import pandas as pd
 from math import floor
@@ -10,6 +11,8 @@ from .main import (
     duplicate_rows,
     add_nulls,
     mess_it_up,
+    add_datetime_errors,
+    datetime_to_disorganised_string
 )
 
 
@@ -281,3 +284,16 @@ def test_mixed_data_types_add_standard_deviations():
     )
     df_deviations = add_standard_deviations(mixed_df, columns="Float")
     assert "Float" in df_deviations.columns
+
+def test_add_datetime_errors_basic():
+    df = pd.DataFrame({
+        'date': [datetime(2025, 7, 10, 15, 0, 0) for _ in range(100)],
+        'value': range(100)
+    })
+
+    modified_df = add_datetime_errors(df, columns='date', sample_size=0.1)
+    affected_rows = modified_df[modified_df['date'] != df['date']]
+
+    # Check if approximately 10% of the rows are affected
+    assert len(affected_rows) == pytest.approx(10, rel=0.1)
+    assert not df.equals(modified_df)

@@ -1,7 +1,7 @@
 import random
 from typo import StrErrer
 import pandas as pd
-
+from datetime import datetime
 
 def create_spag_error(word: str) -> str:
     """
@@ -173,7 +173,7 @@ def duplicate_rows(df: pd.DataFrame, sample_size=None) -> pd.DataFrame:
 
 
 def add_nulls(
-    df: pd.DataFrame, columns=None, min_percent=1, max_percent=10
+    df: pd.DataFrame, columns: str | list[str] = None, min_percent=1, max_percent=10
 ) -> pd.DataFrame:
     """
     Inserts null values into specified DataFrame columns.
@@ -211,6 +211,66 @@ def add_nulls(
         df.loc[indices_to_none, col] = None
     return df
 
+def add_datetime_errors(df: pd.DataFrame, 
+                        columns: str | list[str] = None, 
+                        sample_size: float = 0.1,
+                        format_code: str = None,
+                        wrong_order: bool = True):
+    """
+    Inserts Datetime errors into the dataframe
+
+    :param df: The DataFrame to modify.
+    :type df: pd.DataFrame
+    :param columns: Specific columns to add nulls to. Defaults to all columns if not specified.
+    :type columns: list or str, optional
+    :param sample_size: The percent of rows to modify
+    :type sample_size: int, optional
+    """
+    if not isinstance(df, pd.DataFrame):
+        raise TypeError("Must be a pandas")
+    if df.empty:
+        return df
+    if columns == []:
+        columns = df.columns.to_list()
+    if not columns:
+        columns = df.columns
+    elif isinstance(columns, str):
+        columns = [columns]
+    elif not isinstance(columns, list):
+        raise TypeError(f"Columns is type {type(columns)} but expected str or list")
+    if sample_size <= 0:
+        raise ValueError(f"Sample size must be greater than 0, found {sample_size}")
+    if sample_size >= 1:
+        sample_size /= 10
+    
+    affected_row_count = round(len(df) * (sample_size if sample_size < 1 else 1))
+    for col in columns:
+        indices_to_affect = df.sample(affected_row_count).index
+        df.loc[indices_to_affect, col] = df.loc[indices_to_affect, col].apply(
+            lambda row: datetime_to_disorganised_string(row, format_code, wrong_order))
+    return df
+
+def datetime_to_disorganised_string(date_point: datetime,
+                                    format_code: str = None,
+                                    wrong_order: bool = True) -> str:
+    """
+    Randomly formats a datetime to a string
+
+    :param date_point: A datetime object
+    :type date_point: Datetime
+    :param format_code: A datetime format string
+    :type format_code: str, Optional
+    """
+    if not isinstance(date_point, datetime):
+        raise TypeError(f"date_point must be type Datetime, not {type(date_point)}")
+    if not format_code:
+        join_string = ["-", " ", ":"]
+        format_codes = ["%Y", "%m", "%d", "%H", "%M", "%S"]
+        if wrong_order:
+            random.shuffle(format_codes)
+        format_code = random.choice(join_string).join(format_codes)
+    
+    return date_point.strftime(format_code)
 
 def mess_it_up(
     df: pd.DataFrame,
